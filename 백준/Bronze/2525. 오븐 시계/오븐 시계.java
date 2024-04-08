@@ -17,10 +17,6 @@ public class Main {
         A = (T / 60) % 24;
         B = (B + C) % 60;
 
-        System.out.println(A);
-        System.out.println(B);
-
-
-
+       System.out.println(A+" "+B);
     }
 }
