@@ -1,22 +1,24 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
+    public static void main(String[] args) throws IOException {
 
-    public static void main(String[] args) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        Scanner sc = new Scanner(System.in);
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int A = sc.nextInt();
-        int B = sc.nextInt();
-        int C = sc.nextInt();
+        int A = Integer.parseInt(st.nextToken());
+        int B = Integer.parseInt(st.nextToken());
+        int C = Integer.parseInt(br.readLine());
 
-        sc.close();
+        int total = (A*60) + B + C;
 
-        int T = (A*60) + B + C;
+        int M = (total / 60) % 24;
+        int N = total % 60;
 
-        A = (T / 60) % 24;
-        B = (B + C) % 60;
-
-       System.out.println(A+" "+B);
+        System.out.println(M +" "+ N);
     }
 }
