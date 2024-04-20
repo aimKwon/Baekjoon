@@ -1,35 +1,35 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Main {
+    public static void main(String[] args) throws IOException {
 
-    public static void main(String[] args) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        Scanner sc = new Scanner(System.in);
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
-        int[] Array = new int [3];
+        int A = Integer.parseInt(st.nextToken());
+        int B = Integer.parseInt(st.nextToken());
+        int C = Integer.parseInt(st.nextToken());
 
-        for(int i = 0; i < 3; i++) {
-            Array[i] = sc.nextInt();
-        }
+        int[] Array = new int[3];
+        Array[0] = A;
+        Array[1] = B;
+        Array[2] = C;
 
-        int A = Array[0];
-        int B = Array[1];
-        int C = Array[2];
-
-        sc.close();
-
-        if (A == B && B == C) {
-            System.out.println(10000+(A*1000));
-        } else if (A == B || B == C) {
-            System.out.println(1000+ (B)*100);
-
-            } else if (A == C) {
-            System.out.println(1000+ (C)*100);
-
-        } else if (A!=B && B!=C && C!=A) {
+        if (A==B && B==C) {
+            System.out.println((A*1000)+10000);
+        } else if (A==B || B==C) {
+            System.out.println((100*B)+1000);
+        } else if (A==C) {
+            System.out.println((100*A)+1000);
+        } else if (A!=B && B!=C) {
             Arrays.sort(Array);
             System.out.println(Array[2]*100);
         }
+
     }
 }
