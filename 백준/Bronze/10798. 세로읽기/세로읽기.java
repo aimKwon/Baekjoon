@@ -6,45 +6,26 @@ public class Main  {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        char[][] ch = new char[5][15];
+        int max = 0;
 
-        String[] strArr = new String[5];
-
-        for (int i = 0; i < 5; i++) {
-            strArr[i] = br.readLine();
-        }
-
-        int max = strArr[0].length();
-
-        for (int i = 0; i < 5; i++) {
-            if (strArr[i].length() > max) {
-                max = strArr[i].length();
+        for (int i = 0; i < ch.length; i++) {
+            String str = br.readLine();
+            if (max < str.length()) {
+                max = str.length();
+            }
+            for (int j = 0; j < str.length(); j++) {
+                ch[i][j] = str.charAt(j);
             }
         }
 
-        for (int i = 0; i < 5; i++) {
-            while (strArr[i].length() < max) {
-                strArr[i] += "*";
-            }
-        }
-
-        String[][] arr = new String[5][max];
-
-        for (int i = 0; i < 5; i++) {
-            for (int l = 0; l < max; l++) {
-                arr[i][l] = strArr[i].charAt(l) + "";
-            }
-        }
-
-        String result = "";
-
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < max; i++) {
-            for (int l = 0; l < 5; l++) {
-                result += arr[l][i];
+            for (int j = 0; j < 5; j++) {
+                if(ch[j][i] == '\0') continue;
+                sb.append(ch[j][i]);
             }
         }
-        
-        result = result.replace("*", "");
-
-        System.out.println(result);
+        System.out.println(sb);
     }
 }
