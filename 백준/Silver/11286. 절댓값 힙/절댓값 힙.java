@@ -15,7 +15,7 @@ public class Main  {
             int first_abs = Math.abs(o1);
             int second_abs = Math.abs(o2);
 
-            if(first_abs == second_abs) {
+            if (first_abs == second_abs) {
                 return o1 > o2 ? 1 : -1;
             }
 
