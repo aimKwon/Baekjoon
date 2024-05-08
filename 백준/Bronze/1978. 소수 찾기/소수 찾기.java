@@ -11,22 +11,29 @@ public class Main  {
         int N = Integer.parseInt(br.readLine());
 
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int result = 0;
+        int count = 0;
 
         for (int i = 0; i < N; i++) {
+
             int M = Integer.parseInt(st.nextToken());
-            if (M != 1) {
-                int count = 0;
+
+            boolean isPrime = true;
+
+                if (M == 1) {
+                    continue;
+                }
+
                 for (int l = 2; l <= Math.sqrt(M); l++) {
                     if (M % l == 0) {
-                        count ++;
+                        isPrime = false;
+                        break;
                     }
                 }
-                if (count == 0) {
-                    result++;
+                if (isPrime) {
+                    count++;
                 }
-            }
+
         }
-        System.out.println(result);
+        System.out.println(count);
     }
 }
