@@ -17,7 +17,7 @@ public class Main  {
             int M = Integer.parseInt(st.nextToken());
             if (M != 1) {
                 int count = 0;
-                for (int l = 2; l < M; l++) {
+                for (int l = 2; l <= Math.sqrt(M); l++) {
                     if (M % l == 0) {
                         count ++;
                     }
