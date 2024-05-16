@@ -20,6 +20,13 @@ public class Main {
             arr[i] = Integer.parseInt(st.nextToken());
         }
 
+        int result = findMax(arr, N, M);
+
+        System.out.println(result);
+    }
+
+    private static int findMax(int[] arr, int N, int M) {
+
         ArrayList<Integer> arrayList = new ArrayList<>();
 
         for (int a = 0; a < N-2; a++) {
@@ -32,11 +39,11 @@ public class Main {
         }
 
         int max = arrayList.get(0);
-
+        
         for (int i = 1; i < arrayList.size(); i++) {
             if(arrayList.get(i) > max) max = arrayList.get(i);
         }
 
-        System.out.println(max);
+       return max;
     }
 }
