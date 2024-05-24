@@ -4,34 +4,34 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st  = new StringTokenizer(br.readLine());
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-
-        int M = Integer.parseInt(st.nextToken());
         int N = Integer.parseInt(st.nextToken());
+        int M = Integer.parseInt(st.nextToken());
 
-        int[] Arr = new int[N+1];
-        for (int i = 1; i <= N; i++) {
-            Arr[i] = i;
-        }
-        Arr[1] = 0;
+        boolean primeNumbers[] = new boolean[M+1];
 
-        for (int i = 2; i <= Math.sqrt(N); i++) {
-            if (Arr[i] == 0) {
-                continue;
-            } for (int j = i + i; j <= N; j = j + i) {
-                Arr[j] = 0;
+        primeNumbers[0] = true;
+        primeNumbers[1] = true;
+
+        for (int i = 2; i < Math.sqrt(primeNumbers.length); i++) {
+            if (!primeNumbers[i]) {
+
+                for (int j = i * i; j <= M; j += i) {
+                    primeNumbers[j] = true;
+                }
             }
         }
 
-        for (int i = M; i <= N; i++) {
-            if (Arr[i]!=0) {
-                System.out.println(Arr[i]);
-            }
+        for (int i = 2; i < N; i++) {
+            primeNumbers[i] = true;
+        }
+
+        for (int i = 0; i < primeNumbers.length; i++) {
+            if (!primeNumbers[i]) System.out.println(i);
         }
     }
 }
