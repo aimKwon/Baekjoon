@@ -18,15 +18,18 @@ public class Main {
             set.add(Integer.parseInt(st.nextToken()));
         }
 
+        StringBuilder sb = new StringBuilder();
+
         int M = Integer.parseInt(br.readLine());
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < M; i++) {
             int a = Integer.parseInt(st.nextToken());
             if (set.contains(a)) {
-                System.out.print(1 + " ");
+                sb.append("1").append(" ");
             } else {
-                System.out.print(0 + " ");
+                sb.append("0").append(" ");
             }
         }
+        System.out.println(sb);
     }
 }
