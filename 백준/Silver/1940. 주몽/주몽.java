@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
-
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -13,31 +12,31 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
         int M = Integer.parseInt(br.readLine());
 
-        int[] A = new int [N];
-        StringTokenizer st = new StringTokenizer(br.readLine());
+        int [] arr = new int[N];
 
-        for (int i = 0; i <N; i++) {
-            A[i] = Integer.parseInt(st.nextToken());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < N; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
         }
 
-        Arrays.sort(A);
+        Arrays.sort(arr);
+
+        int start_idx = 0;
+        int end_idx = N - 1;
         int count = 0;
 
-        int i = 0;
-        int j = N-1;
+        while (start_idx < end_idx) {
 
-        while ( i < j) {
-            if (A[i]+A[j] < M) {
-                i++;
-            } else if (A[i]+A[j] > M) {
-                j--;
+            if (arr[start_idx] + arr[end_idx] > M) {
+                end_idx = end_idx - 1;
+
+            } else if (arr[start_idx] + arr[end_idx] < M) {
+                    start_idx = start_idx + 1;
             } else {
-                count ++;
-                i++;
-                j--;
+                count++;
+                start_idx = start_idx + 1;
             }
         }
-
         System.out.println(count);
     }
 }
