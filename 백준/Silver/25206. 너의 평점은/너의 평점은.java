@@ -1,52 +1,97 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 
-public class Main  {
+public class Main {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int credit = 0;
-        double sum = 0;
+
+        Map<String, Double> map = new HashMap<>();
+
+        map.put("A+", 4.5);
+        map.put("A0", 4.0);
+        map.put("B+", 3.5);
+        map.put("B0", 3.0);
+        map.put("C+", 2.5);
+        map.put("C0", 2.0);
+        map.put("D+", 1.5);
+        map.put("D0", 1.0);
+        map.put("F", 0.0);
+
+        ArrayList<Double> arrayList = new ArrayList();
+
+        double grade = 0;
+
+        for (int i = 0; i < 20; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+
+            String A = st.nextToken();
+            double B = Double.parseDouble(st.nextToken());
+            String C = st.nextToken();
 
 
-        for(int i = 0; i < 20; i++) {
-            String str = br.readLine();
-            StringTokenizer st = new StringTokenizer(str," ");
+            switch (C) {
 
-            String Subject = st.nextToken();
-            double A = Double.parseDouble(st.nextToken());
-            String B = st.nextToken();
+                case "A+":
+                    arrayList.add(B * (map.get(C)));
+                    grade += B;
+                    break;
 
-            if (B.equals("A+")) {
-                B = B.replace("A+", "4.5");
-            }if (B.equals("A0")) {
-                B = B.replace("A0", "4.0");
-            }if (B.equals("B+")) {
-                B = B.replace("B+", "3.5");
-            }if (B.equals("B0")) {
-                B = B.replace("B0", "3.0");
-            }if (B.equals("C+")) {
-                B = B.replace("C+", "2.5");
-            }if (B.equals("C0")) {
-                B = B.replace("C0", "2.0");
-            }if (B.equals("D+")) {
-                B = B.replace("D+", "1.5");
-            }if (B.equals("D0")) {
-                B = B.replace("D0", "1.0");
-            }if (B.equals("F")) {
-                B = B.replace("F", "0.0");
-            }if (B.equals("P")) {
-                B = B.replace("P", "0.0");
-                A = 0;
+                case "A0":
+                    arrayList.add(B * (map.get(C)));
+                    grade += B;
+                    break;
+
+                case "B+":
+                    arrayList.add(B * (map.get(C)));
+                    grade += B;
+                    break;
+
+                case "B0":
+                    arrayList.add(B * (map.get(C)));
+                    grade += B;
+                    break;
+
+                case "C+":
+                    arrayList.add(B * (map.get(C)));
+                    grade += B;
+                    break;
+
+                case "C0":
+                    arrayList.add(B * (map.get(C)));
+                    grade += B;
+                    break;
+
+                case "D+":
+                    arrayList.add(B * (map.get(C)));
+                    grade += B;
+                    break;
+
+                case "D0":
+                    arrayList.add(B * (map.get(C)));
+                    grade += B;
+                    break;
+
+                case "F":
+                    arrayList.add(B * (map.get(C)));
+                    grade += B;
+                    break;
+
+                case "P":
+                    break;
             }
-            credit += A;
 
-            sum += A * (Double.parseDouble(B));
         }
 
-        System.out.printf("%.6f", sum / credit);
-
+        double sum = 0;
+        for (int i = 0; i < arrayList.size(); i++) {
+            sum += arrayList.get(i);
+        }
+        System.out.println(sum / grade);
     }
 }
