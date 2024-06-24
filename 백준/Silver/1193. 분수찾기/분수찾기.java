@@ -2,29 +2,28 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main  {
+public class Main {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int N = Integer.parseInt(br.readLine());
 
-        int cross_count = 1, prev_count_sum = 0;
+        int newIndex = 1;
+        int prevSum = 0;
 
         while (true) {
-
-            if (N <= prev_count_sum + cross_count) {
-
-                if (cross_count % 2 == 1) {
-                    System.out.println((cross_count - (N - prev_count_sum - 1)) + "/" + (N - prev_count_sum));
+            if (N <= prevSum + newIndex) {
+                if (newIndex % 2 == 0) {
+                    System.out.println((N - prevSum) + "/" + (newIndex - (N - prevSum - 1)));
                     break;
                 } else {
-                    System.out.println((N - prev_count_sum) + "/" + (cross_count - (N - prev_count_sum - 1)));
+                    System.out.println((newIndex - (N - prevSum - 1)) + "/" + (N - prevSum));
                     break;
                 }
             } else {
-                prev_count_sum += cross_count;
-                cross_count++;
+                prevSum += newIndex;
+                newIndex++;
             }
         }
     }
