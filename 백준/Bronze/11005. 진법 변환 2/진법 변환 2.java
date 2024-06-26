@@ -3,30 +3,28 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main  {
+public class Main {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
         int A = Integer.parseInt(st.nextToken());
         int B = Integer.parseInt(st.nextToken());
         int tmp = 0;
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
-        while (A> 0) {
+        while (A > 0) {
             tmp = A % B;
             if (tmp >= 10) {
-                char c = (char) (tmp+55);
-                result += c;
+                char c = (char)(tmp + 55);
+                result.append(c);
             } else {
-                result += tmp;
+                result.append(tmp);
             }
             A = A / B;
         }
-        for (int i = result.length()-1; i >= 0; i--) {
-            System.out.print(result.charAt(i));
-        }
+        System.out.println(result.reverse().toString());  
     }
 }
