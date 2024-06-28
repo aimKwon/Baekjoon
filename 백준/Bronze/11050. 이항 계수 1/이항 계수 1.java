@@ -24,7 +24,6 @@ public class Main {
         for (int i = 1; i <= K; i++) {
             B *= i;
         }
-
         System.out.println(A / B);
     }
 }
