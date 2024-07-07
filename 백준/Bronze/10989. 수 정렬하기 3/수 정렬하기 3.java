@@ -18,6 +18,7 @@ public class Main {
         for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(br.readLine());
         }
+        
         br.close();
 
         Arrays.sort(arr);
